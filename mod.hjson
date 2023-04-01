@@ -1,0 +1,25 @@
+#the mod name as displayed in-game
+displayName: "Mineable Alloys v1.0"
+
+repo: "PiggyChu620/MindustryRandomPlanet"
+
+#the internal name of your mod
+name: "ma620"
+
+#your name
+author: "PiggyChu620"
+
+#the fully qualified main class of the mod
+main: "ma620.MA620Mod"
+
+#the mod description as seen in the mod dialog
+description: "Make all alloys/intermetallic directly mineable, currently only works on Serpulo and editor"
+
+#the mod version
+version: 1.0
+
+#the minimum game build required to run this mod
+minGameVersion: 140
+
+#this is a java mod
+java: true
