@@ -13,7 +13,7 @@ import static mindustry.type.ItemStack.with;
 public class MA620Blocks
 {
 
-	public static Block oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium;
+	public static Block oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod;
 	public static Block oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide;
 	public static void load()
 	{
@@ -44,12 +44,12 @@ public class MA620Blocks
 		orePyratite = new OreBlock("ore-pyratite", Items.pyratite)
 		{{
 			oreDefault = true;
-			Items.pyratite.hardness=2;
+			Items.pyratite.hardness=3;
 		}};
 		oreBlastCompound = new OreBlock("ore-blast-compound", Items.blastCompound)
 		{{
 			oreDefault = true;
-			Items.blastCompound.hardness=3;
+			Items.blastCompound.hardness=4;
 		}};
 		oreMetaglass = new OreBlock("ore-metaglass", Items.metaglass)
 		{{
@@ -70,6 +70,11 @@ public class MA620Blocks
 		{{
 			oreDefault = true;
 			Items.plastanium.hardness=3;
+		}};
+		oreSporePod=new OreBlock("ore-spore-pod", Items.sporePod)
+		{{
+			oreDefault=true;
+			Items.sporePod.hardness=1;
 		}};
 		oreCarbide=new OreBlock("ore-carbide", Items.carbide)
 		{{
