@@ -1,4 +1,4 @@
-# Mindustry Java Mod - Mineable Alloys 1.0
+# Mindustry Java Mod - Mineable Alloys 1.1
 A Java Mindustry mod.
 
 All alloys/intermetallic are now mineable, currently only works on Serpulo<sup>1</sup> and editor
