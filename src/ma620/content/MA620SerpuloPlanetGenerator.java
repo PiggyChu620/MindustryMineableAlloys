@@ -27,7 +27,8 @@ public class MA620SerpuloPlanetGenerator extends PlanetGenerator{
     float scl = 5f;
     float waterOffset = 0.07f;
     boolean genLakes = false;
-
+    final int seed=(int)(System.currentTimeMillis()%Integer.MAX_VALUE);
+    final Rand rand=new Rand(seed);
     Block[][] arr =
             {
                     {Blocks.water, Blocks.darksandWater, Blocks.darksand, Blocks.darksand, Blocks.darksand, Blocks.darksand, Blocks.sand, Blocks.sand, Blocks.sand, Blocks.sand, Blocks.darksandTaintedWater, Blocks.stone, Blocks.stone},
@@ -411,21 +412,24 @@ public class MA620SerpuloPlanetGenerator extends PlanetGenerator{
                 }
             });
         }
-        Seq<Block> availableOres=Seq.with(Blocks.oreCoal,Blocks.oreTitanium,Blocks.oreThorium,MA620Blocks.oreGraphite,MA620Blocks.oreSilicon,MA620Blocks.oreMetaglass,MA620Blocks.orePyratite,MA620Blocks.oreBlastCompound,MA620Blocks.orePlastanium,MA620Blocks.orePhaseFabric,MA620Blocks.oreSurgeAlloy);
+        Seq<Block> availableOres=MA620Blocks.serpuloBlocks.copy().addAll(Blocks.oreCoal,Blocks.oreTitanium,Blocks.oreThorium).select(b->!b.itemDrop.hidden);
         Seq<Block> ores = Seq.with(Blocks.oreCopper, Blocks.oreLead);
         float poles = Math.abs(sector.tile.v.y);
         float nmag = 0.5f;
         float scl = 1f;
         float addscl = 1.3f;
 
-        for(int i=0;i<availableOres.size;i++)
+//        for(int i=0;i<availableOres.size;i++)
+//        {
+//            if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x+i, sector.tile.v.y, sector.tile.v.z)*nmag + poles > (i+1)*addscl/(availableOres.size+1))
+//            {
+//                ores.add(availableOres.get(i));
+//            }
+//        }
+        for(Block b:availableOres)
         {
-            if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x+i, sector.tile.v.y, sector.tile.v.z)*nmag + poles > (i+1)*addscl/(availableOres.size+1))
-            {
-                ores.add(availableOres.get(i));
-            }
+            if(2*rand.nextDouble()>=b.itemDrop.cost) ores.add(b);
         }
-
 
         if(rand.chance(0.25)){
             ores.add(Blocks.oreScrap);

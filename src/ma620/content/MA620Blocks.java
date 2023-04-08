@@ -1,5 +1,7 @@
 package ma620.content;
 
+import arc.Core;
+import arc.struct.Seq;
 import mindustry.content.*;
 import mindustry.type.Category;
 import mindustry.world.Block;
@@ -13,8 +15,11 @@ import static mindustry.type.ItemStack.with;
 public class MA620Blocks
 {
 
-	public static Block oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod;
+	public static Block oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod,oreSand;
 	public static Block oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide;
+
+	public static Seq<Block> serpuloBlocks;
+	public static Seq<Block> allBlocks;
 	public static void load()
 	{
 		//region Unlock hidden items
@@ -76,6 +81,11 @@ public class MA620Blocks
 			oreDefault=true;
 			Items.sporePod.hardness=1;
 		}};
+		oreSand=new OreBlock("ore-sand",Items.sand)
+		{{
+			oreDefault=true;
+			Items.sand.hardness=1;
+		}};
 		oreCarbide=new OreBlock("ore-carbide", Items.carbide)
 		{{
 			oreDefault=true;
@@ -89,7 +99,7 @@ public class MA620Blocks
 		oreDormantCyst=new OreBlock("ore-dormant-cyst", Items.dormantCyst)
 		{{
 			oreDefault=true;
-			Items.dormantCyst.hidden=false;
+			//Items.dormantCyst.hidden=false;
 			Items.dormantCyst.hardness=4;
 		}};
 		oreFissileMatter=new OreBlock("ore-fissile-matter", Items.fissileMatter)
@@ -98,5 +108,15 @@ public class MA620Blocks
 			Items.fissileMatter.hidden=false;
 			Items.fissileMatter.hardness=4;
 		}};
+
+		serpuloBlocks = Seq.with(oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod,oreSand);
+		allBlocks = serpuloBlocks.copy().addAll(oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide);
+
+		for(Block b:allBlocks)
+		{
+			String name="ma620."+b.name;
+
+			if(Core.settings.has(name)) b.itemDrop.hidden=!Core.settings.getBool(name);
+		}
 	}
 }

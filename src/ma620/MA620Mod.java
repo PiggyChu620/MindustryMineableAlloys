@@ -44,7 +44,7 @@ public class MA620Mod extends Mod
     @Override
     public void init()
     {
-        //EC620Setting.loadUI();
+        MA620Setting.loadUI();
     }
     @Override
     public void loadContent()
@@ -53,6 +53,7 @@ public class MA620Mod extends Mod
 
         MA620Blocks.load();
         MA620Planets.load();
+        MA620Setting.load();
 
         Log.info("Random Planet loaded successfully.");
     }
