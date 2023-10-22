@@ -1,4 +1,4 @@
-# Mindustry Java Mod - Mineable Alloys 1.1
+# Mindustry Java Mod - Mineable Alloys 1.2
 A Java Mindustry mod.
 
 All alloys/intermetallic are now mineable, currently only works on Serpulo<sup>1</sup> and editor
@@ -17,6 +17,9 @@ All alloys/intermetallic are now mineable, currently only works on Serpulo<sup>1
 - Add Spore Pod and Sand
 - Change Serpulo ore placement to be more random
 - Add settings so that you could decide which ore you want to activate<sup>2</sup>
+
+*v1.2*
+- Add liquids
 
 --- 
 

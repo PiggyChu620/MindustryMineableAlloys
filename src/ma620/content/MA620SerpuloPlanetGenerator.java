@@ -412,8 +412,8 @@ public class MA620SerpuloPlanetGenerator extends PlanetGenerator{
                 }
             });
         }
-        Seq<Block> availableOres=MA620Blocks.serpuloBlocks.copy().addAll(Blocks.oreCoal,Blocks.oreTitanium,Blocks.oreThorium).select(b->!b.itemDrop.hidden);
-        Seq<Block> ores = Seq.with(Blocks.oreCopper, Blocks.oreLead);
+        Seq<Block> availableOres=MA620Blocks.serpuloBlocks.copy().addAll(Blocks.oreThorium).select(b->!b.itemDrop.hidden);
+        Seq<Block> ores = Seq.with(Blocks.oreCopper, Blocks.oreLead,Blocks.oreCoal,Blocks.oreTitanium);
         float poles = Math.abs(sector.tile.v.y);
         float nmag = 0.5f;
         float scl = 1f;

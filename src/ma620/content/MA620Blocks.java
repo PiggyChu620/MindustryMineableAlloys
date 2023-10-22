@@ -1,10 +1,13 @@
 package ma620.content;
 
 import arc.Core;
+import arc.graphics.Color;
 import arc.struct.Seq;
 import mindustry.content.*;
+import mindustry.graphics.CacheLayer;
 import mindustry.type.Category;
 import mindustry.world.Block;
+import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
 
 import static arc.graphics.g2d.Draw.color;
@@ -16,7 +19,7 @@ public class MA620Blocks
 {
 
 	public static Block oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod,oreSand;
-	public static Block oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide;
+	public static Block oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide,ozone,hydrogen,nitrogen,cyanogen,neoplasm;
 
 	public static Seq<Block> serpuloBlocks;
 	public static Seq<Block> allBlocks;
@@ -108,9 +111,65 @@ public class MA620Blocks
 			Items.fissileMatter.hidden=false;
 			Items.fissileMatter.hardness=4;
 		}};
+		ozone = new Floor("liquid-ozone"){{
+			drownTime = 150f;
+			status = StatusEffects.freezing;
+			statusDuration = 240f;
+			variants = 0;
+			liquidDrop = Liquids.ozone;
+			isLiquid = true;
+			emitLight = true;
+			lightRadius = 25f;
+			lightColor = Color.valueOf("d699f0").a(0.2f);
+		}};
+		hydrogen = new Floor("liquid-hydrogen"){{
+			drownTime = 150f;
+			status = StatusEffects.freezing;
+			statusDuration = 240f;
+			variants = 0;
+			liquidDrop = Liquids.hydrogen;
+			isLiquid = true;
+			emitLight = true;
+			lightRadius = 25f;
+			lightColor = Color.valueOf("9eabf7").a(0.2f);
+		}};
+		nitrogen = new Floor("liquid-nitrogen"){{
+			drownTime = 150f;
+			status = StatusEffects.freezing;
+			statusDuration = 240f;
+			variants = 0;
+			liquidDrop = Liquids.nitrogen;
+			isLiquid = true;
+			emitLight = true;
+			lightRadius = 25f;
+			lightColor = Color.valueOf("efe3ff").a(0.2f);
+		}};
+		cyanogen = new Floor("liquid-cyanogen"){{
+			drownTime = 150f;
+			status = StatusEffects.freezing;
+			statusDuration = 240f;
+			variants = 0;
+			liquidDrop = Liquids.cyanogen;
+			isLiquid = true;
+			emitLight = true;
+			lightRadius = 25f;
+			lightColor = Color.valueOf("89e8b6").a(0.2f);
+		}};
+		neoplasm = new Floor("pooled-neoplasm"){{
+			drownTime = 150f;
+			status = StatusEffects.corroded;
+			statusDuration = 240f;
+			variants = 0;
+			liquidDrop = Liquids.neoplasm;
+			isLiquid = true;
+			emitLight = true;
+			lightRadius = 25f;
+			lightColor = Color.valueOf("e8803f").a(0.2f);
+		}};
+
 
 		serpuloBlocks = Seq.with(oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod,oreSand);
-		allBlocks = serpuloBlocks.copy().addAll(oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide);
+		allBlocks = serpuloBlocks.copy().addAll(oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide,ozone,hydrogen,nitrogen,cyanogen,neoplasm);
 
 		for(Block b:allBlocks)
 		{
