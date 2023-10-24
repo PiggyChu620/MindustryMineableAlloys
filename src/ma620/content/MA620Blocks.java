@@ -37,6 +37,7 @@ public class MA620Blocks
 												40));
 		Blocks.heatReactor.requirements(Category.crafting,
 										with(Items.oxide, 70, Items.graphite, 20, Items.carbide, 10, Items.thorium, 80));
+
 		//endregion
 		//region Ores
 		oreGraphite = new OreBlock("ore-graphite", Items.graphite)
@@ -111,7 +112,10 @@ public class MA620Blocks
 			Items.fissileMatter.hidden=false;
 			Items.fissileMatter.hardness=4;
 		}};
+
+		//Liquids/Gases
 		ozone = new Floor("liquid-ozone"){{
+			localizedName="Ozone";
 			drownTime = 150f;
 			status = StatusEffects.freezing;
 			statusDuration = 240f;
@@ -121,8 +125,10 @@ public class MA620Blocks
 			emitLight = true;
 			lightRadius = 25f;
 			lightColor = Color.valueOf("d699f0").a(0.2f);
+			cacheLayer = MA620CacheLayer.ozone;
 		}};
 		hydrogen = new Floor("liquid-hydrogen"){{
+			localizedName="Hydrogen";
 			drownTime = 150f;
 			status = StatusEffects.freezing;
 			statusDuration = 240f;
@@ -132,8 +138,10 @@ public class MA620Blocks
 			emitLight = true;
 			lightRadius = 25f;
 			lightColor = Color.valueOf("9eabf7").a(0.2f);
+			cacheLayer = MA620CacheLayer.hydrogen;
 		}};
 		nitrogen = new Floor("liquid-nitrogen"){{
+			localizedName="Nitrogen";
 			drownTime = 150f;
 			status = StatusEffects.freezing;
 			statusDuration = 240f;
@@ -143,8 +151,10 @@ public class MA620Blocks
 			emitLight = true;
 			lightRadius = 25f;
 			lightColor = Color.valueOf("efe3ff").a(0.2f);
+			cacheLayer = MA620CacheLayer.nitrogen;
 		}};
 		cyanogen = new Floor("liquid-cyanogen"){{
+			localizedName="Cyanogen";
 			drownTime = 150f;
 			status = StatusEffects.freezing;
 			statusDuration = 240f;
@@ -154,8 +164,10 @@ public class MA620Blocks
 			emitLight = true;
 			lightRadius = 25f;
 			lightColor = Color.valueOf("89e8b6").a(0.2f);
+			cacheLayer = MA620CacheLayer.cyanogen;
 		}};
 		neoplasm = new Floor("pooled-neoplasm"){{
+			localizedName="Neoplasm";
 			drownTime = 150f;
 			status = StatusEffects.corroded;
 			statusDuration = 240f;
@@ -165,7 +177,9 @@ public class MA620Blocks
 			emitLight = true;
 			lightRadius = 25f;
 			lightColor = Color.valueOf("e8803f").a(0.2f);
+			cacheLayer = MA620CacheLayer.neoplasm;
 		}};
+
 
 
 		serpuloBlocks = Seq.with(oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod,oreSand);
@@ -175,7 +189,12 @@ public class MA620Blocks
 		{
 			String name="ma620."+b.name;
 
-			if(Core.settings.has(name)) b.itemDrop.hidden=!Core.settings.getBool(name);
+			if(Core.settings.has(name))
+			{
+				Floor f=b.asFloor();
+				if(f.isLiquid) f.liquidDrop.hidden=Core.settings.getFloat(name)==0;
+				else b.itemDrop.hidden=Core.settings.getFloat(name)==0;
+			}
 		}
 	}
 }

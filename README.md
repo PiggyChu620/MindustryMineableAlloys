@@ -1,4 +1,4 @@
-# Mindustry Java Mod - Mineable Alloys 1.2
+# Mindustry Java Mod - Mineable Alloys 1.3
 A Java Mindustry mod.
 
 All alloys/intermetallic are now mineable, currently only works on Serpulo<sup>1</sup> and editor
@@ -19,7 +19,11 @@ All alloys/intermetallic are now mineable, currently only works on Serpulo<sup>1
 - Add settings so that you could decide which ore you want to activate<sup>2</sup>
 
 *v1.2*
-- Add liquids
+- Add liquids/gases
+
+*v1.3*
+- Add catch layers of liquids/gases
+- Change settings to chances in percentage of appearance, set it to 0 to disable
 
 --- 
 

@@ -44,17 +44,21 @@ public class MA620Mod extends Mod
     @Override
     public void init()
     {
+        Log.info("Initializing Mineable Alloys content.");
         MA620Setting.loadUI();
+        Log.info("Mineable Alloys initialized.");
     }
     @Override
     public void loadContent()
     {
-        Log.info("Loading Random Planet content.");
+        Log.info("Loading Mineable Alloys content.");
 
+        MA620Shaders.init();
+        MA620CacheLayer.init();
         MA620Blocks.load();
         MA620Planets.load();
         MA620Setting.load();
 
-        Log.info("Random Planet loaded successfully.");
+        Log.info("Mineable Alloys loaded successfully.");
     }
 }
