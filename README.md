@@ -22,7 +22,7 @@ All alloys/intermetallic are now mineable, currently only works on Serpulo<sup>1
 - Add liquids/gases
 
 *v1.3*
-- Add catch layers of liquids/gases
+- Add cache layers of liquids/gases
 - Change settings to chances in percentage of appearance, set it to 0 to disable
 
 --- 
