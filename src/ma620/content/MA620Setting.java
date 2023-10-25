@@ -30,7 +30,6 @@ public class MA620Setting
 
     private static ObjectMap<String,SettingInfo> settingInfos=new ObjectMap<>();
     private static ObjectMap<Block,Float> chances=new ObjectMap<Block, Float>();
-    private static boolean reset=false;
     public static void load()
     {
         chances.put(oreBlastCompound,20f);
@@ -64,7 +63,7 @@ public class MA620Setting
 //                new BoolSetting("ec620.schematics","Build-in defensive schematics","Whether to include schematics I made for the enemies to use as defenses",null,true,true)
 //        );
 
-        all.each(SettingKey::setDefault);
+        all.each(s->s.setDefault(false));
         MA620Blocks.setBlocks();
     }
 
@@ -83,10 +82,9 @@ public class MA620Setting
         }).margin(60).get().setForceScroll(false, true);
         table.row();
         table.row();
-        table.button("Reset",()->{
-            reset=true;
-            all.each(s->s.setDefault());
-            reset=false;
+        table.button("Reset",()->
+        {
+            all.each(s->s.setDefault(true));
         }).size(100f, 50f);
     }
 
@@ -146,7 +144,7 @@ public class MA620Setting
 
         public abstract T getValue();
 
-        public abstract void setDefault();
+        public abstract void setDefault(boolean reset);
 
         public abstract void buildTable(Table table);
     }
@@ -177,7 +175,8 @@ public class MA620Setting
         }
 
         @Override
-        public void setDefault(){
+        public void setDefault(boolean reset)
+        {
             if(!Core.settings.has(key)) Core.settings.put(key, def);
         }
 
@@ -252,18 +251,21 @@ public class MA620Setting
         }
 
         @Override
-        public void setDefault()
+        public void setDefault(boolean reset)
         {
-            try
+            if(!reset)
             {
-                float f = settings.getFloat(key);
+                try
+                {
+                    float f = settings.getFloat(key);
+                }
+                catch (Exception e)
+                {
+                    reset=true;
+                }
             }
-            catch (Exception e)
-            {
-                reset=true;
-            }
+            
             if(!Core.settings.has(key) || reset) Core.settings.put(key, def);
-            reset=false;
         }
 
         @Override
