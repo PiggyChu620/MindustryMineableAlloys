@@ -263,6 +263,7 @@ public class MA620Setting
                 reset=true;
             }
             if(!Core.settings.has(key) || reset) Core.settings.put(key, def);
+            reset=false;
         }
 
         @Override
