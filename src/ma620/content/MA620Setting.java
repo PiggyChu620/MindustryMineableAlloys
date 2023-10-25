@@ -65,7 +65,7 @@ public class MA620Setting
 //        );
 
         all.each(SettingKey::setDefault);
-
+        MA620Blocks.setBlocks();
     }
 
     public static void loadUI()
@@ -256,7 +256,7 @@ public class MA620Setting
         {
             try
             {
-                settings.getFloat(key);
+                float f = settings.getFloat(key);
             }
             catch (Exception e)
             {

@@ -185,6 +185,10 @@ public class MA620Blocks
 		serpuloBlocks = Seq.with(oreSilicon,oreGraphite,oreMetaglass,orePyratite,oreBlastCompound,oreSurgeAlloy,orePhaseFabric,orePlastanium,oreSporePod,oreSand);
 		allBlocks = serpuloBlocks.copy().addAll(oreCarbide,oreDormantCyst,oreFissileMatter,oreOxide,ozone,hydrogen,nitrogen,cyanogen,neoplasm);
 
+
+	}
+	public static void setBlocks()
+	{
 		for(Block b:allBlocks)
 		{
 			String name="ma620."+b.name;
