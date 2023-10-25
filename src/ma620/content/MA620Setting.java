@@ -252,7 +252,16 @@ public class MA620Setting
         }
 
         @Override
-        public void setDefault(){
+        public void setDefault()
+        {
+            try
+            {
+                settings.getFloat(key);
+            }
+            catch (Exception e)
+            {
+                reset=true;
+            }
             if(!Core.settings.has(key) || reset) Core.settings.put(key, def);
         }
 
